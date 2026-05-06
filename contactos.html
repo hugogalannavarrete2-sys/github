@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contactos</title>
+  <link rel="stylesheet" href="css.css"/>
+
+  <style>
+    /* igualar estilos de inputs y select */
+    input, textarea, select {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #cfe0ff;
+      outline: none;
+      transition: 0.3s;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #1e6fff;
+      box-shadow: 0 0 10px rgba(30,110,255,0.2);
+    }
+
+    .phone-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    select {
+      min-width: 90px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo-box">
+      <img src="pixelaudit.png" class="logo" />
+      <h1>Pixelaudit Studio</h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="ofertas.html">Ofertas</a>
+      <a href="contactos.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Contacto</h2>
+
+    <form id="contactForm">
+
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="email" id="email" placeholder="Correo electrónico" required>
+
+      <div class="phone-group">
+        <select id="prefijo" required>
+          <option value="+34">🇪🇸 +34</option>
+          <option value="+33">🇫🇷 +33</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+49">🇩🇪 +49</option>
+          <option value="+1">🇺🇸 +1</option>
+        </select>
+        <input type="tel" id="telefono" placeholder="Teléfono" required>
+      </div>
+
+      <textarea id="mensaje" placeholder="Mensaje" required></textarea>
+
+      <button type="submit">Enviar</button>
+
+      <p id="formMsg" style="margin-top:10px;font-weight:bold;"></p>
+
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pixelaudit Studio</p>
+</footer>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("page-enter");
+    setTimeout(() => document.body.classList.remove("page-enter"), 50);
+  });
+
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+
+      if (href && !href.startsWith("#")) {
+        e.preventDefault();
+        document.body.classList.add("page-exit");
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("telefono").value;
+    const mensaje = document.getElementById("mensaje").value;
+
+    if (!nombre || !email || !telefono || !mensaje) {
+      msg.style.color = "red";
+      msg.textContent = "Debes completar todos los campos";
+      return;
+    }
+
+    msg.style.color = "green";
+    msg.textContent = "Mensaje enviado con éxito";
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

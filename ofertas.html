@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ofertas</title>
+  <link rel="stylesheet" href="css.css"/>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo-box">
+      <img src="pixelaudit.png" class="logo" />
+      <h1>Pixelaudit Studio</h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="ofertas.html">Ofertas</a>
+      <a href="contactos.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>OFERTAS</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Creación de Página Web Profesional</h3>
+        <br>
+        <p>
+          Diseñamos tu página web desde cero, adaptada a tu negocio, optimizada para móviles,
+          rápida y lista para posicionarse en Google.
+        </p>
+        <p>
+          Incluye diseño personalizado, estructura completa, integración básica SEO y formulario de contacto.
+        </p>
+        <p><strong>Precio:</strong> desde 1.200€ hasta 2.500€ (según complejidad)</p>
+      </div>
+
+      <div class="card">
+        <h3>Auditoría y Mejora de Página Web</h3>
+        <br>
+        <p>
+          Analizamos tu página web actual para detectar errores de diseño, velocidad, SEO y experiencia de usuario.
+        </p>
+        <p>
+          Te entregamos un informe completo y, si lo deseas, aplicamos mejoras para optimizar su rendimiento.
+        </p>
+        <p><strong>Precio:</strong> desde 300€ hasta 900€</p>
+      </div>
+
+      <div class="card">
+        <h3>Mantenimiento Web</h3>
+        <br>
+        <br>
+        <p>
+          Mantén tu página siempre actualizada, segura y funcionando correctamente.
+          Incluye actualizaciones, copias de seguridad y soporte técnico.
+        </p>
+        <p>
+          Puedes elegir pago mensual o anual con descuento.
+        </p>
+        <p><strong>Mensual:</strong> desde 40€ / mes</p>
+        <p><strong>Anual:</strong> desde 400€ / año</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pixelaudit Studio</p>
+</footer>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("page-enter");
+    setTimeout(() => document.body.classList.remove("page-enter"), 50);
+  });
+
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+
+      if (href && !href.startsWith("#")) {
+        e.preventDefault();
+        document.body.classList.add("page-exit");
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
